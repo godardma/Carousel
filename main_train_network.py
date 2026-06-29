@@ -12,11 +12,13 @@ def train_network(inputs, outputs):
     model = NeuralNetwork()
     X = from_numpy(inputs)
     y = from_numpy(outputs)
-    model.train_model(X, y, cost_fn=cost_fn, epochs=1)
-    model.register_to_csv("network_v1.csv")
+    model.train_model(X, y, cost_fn=cost_fn, epochs=10)
+    model.register_to_csv("network_v1_1000,_10.csv")
 
 def main_train_network():
-    inputs, outputs = get_dataset_v1(10, 2, 2, 2)
+    print('')
+    inputs, outputs = get_dataset_v1(1000)
+    print('here')
     train_network(inputs, outputs)
 
 
