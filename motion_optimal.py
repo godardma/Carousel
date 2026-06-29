@@ -24,8 +24,8 @@ def motion_optimal(x, y, theta, K, u_bar, R):
   x_dot, y_dot = phi(x,y,R)
   theta_d = np.arctan2(y_dot,x_dot)
   d_theta = sawtooth(theta_d - theta)
-  u1 = u_bar + K*d_theta
-  u2 = u_bar - K*d_theta
+  u1 = u_bar - K*d_theta
+  u2 = u_bar + K*d_theta
   return u1, u2
 
 def animate_euler(X0,tf,dt,K,u_bar,R):
@@ -37,8 +37,14 @@ def animate_euler(X0,tf,dt,K,u_bar,R):
     y_dot = v*np.sin(X[2])
     theta_dot = w
     X += np.array([x_dot, y_dot, theta_dot])*dt
+    plt.scatter(X[0], X[1], color='red')
+    plt.pause(0.01)
 
-draw_vector_field(-100,100,-100,100, 10)
+if __name__ == '__main__':
 
-x0 = [30,30,2] #x,y,theta
-animate_euler(x0, 40, 0.5, 1, 5, 10)
+  draw_vector_field(-100,100,-100,100, 10)
+
+  x0 = [30,30,2] #x,y,theta
+  animate_euler(x0, 40, 0.5, 1, 5, 10)
+
+  plt.show()
