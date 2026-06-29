@@ -8,7 +8,7 @@ from motion_optimal import motion_optimal
 def get_dataset_v1(N: int, K: float = 1, u_bar: float = 5, R: float= 10) -> tuple[np.ndarray, np.ndarray]:
     inputs = []
     outputs = []
-    limit = 100
+    limit = 25
     for _ in range(N):
         x = uniform(-limit, limit)
         y = uniform(-limit, limit)

@@ -27,7 +27,7 @@ def main_train_network():
     epochs = 10_000
     lr = 0.005
     # Training of the network
-    get_dataset = [get_dataset_v1, get_dataset_v2, get_dataset_v3][version + 1]
+    get_dataset = [get_dataset_v1, get_dataset_v2, get_dataset_v3][version - 1]
     inputs, outputs = get_dataset(N, K, u_bar, R)
     network_name = f'network_v{version}_{N}_{K}_{u_bar}_{R}_{epochs}'
     train_network(inputs, outputs, epochs, lr, network_name)

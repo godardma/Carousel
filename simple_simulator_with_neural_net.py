@@ -74,9 +74,9 @@ if __name__ == '__main__':
     x = np.array([[x0, y0, θ0, vx0, vy0, w0, w10, w20]]).T
     dt = 0.01
 
-    R = 1
+    R = 10
     K, u_bar = 4, 20
-    neural_net = NeuralNetwork("models/network_v1_100000_4_20_10_100000.csv")
+    neural_net = NeuralNetwork("models/network_v3_100000_4_20_10_10000.csv")
     for t in np.arange(0, 50, dt):
         clear(ax)
         draw_vector_field(-25,25,-25,25,R)
