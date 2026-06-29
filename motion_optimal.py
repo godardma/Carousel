@@ -26,8 +26,8 @@ def motion_optimal(x, y, theta, K, u_bar, R):
   x_dot, y_dot = phi(x,y,R)
   theta_d = np.arctan2(y_dot,x_dot)
   d_theta = sawtooth(theta_d - theta)
-  u1 = u_bar + K*d_theta
-  u2 = u_bar - K*d_theta
+  u1 = u_bar - K*d_theta
+  u2 = u_bar + K*d_theta
   return u1, u2
 
 def animate_euler(X0,tf,dt,K,u_bar,R):
