@@ -1,7 +1,8 @@
-import numpy as np
-import math
 import matplotlib.pyplot as plt
-from ddboatlib import pool_to_latlong, init_figure, draw_polygon, clear, draw_ddboat, ψ0
+import numpy as np
+
+from ddboatlib import init_figure, clear, draw_ddboat
+
 
 def sawtooth(theta):
   return 2*np.arctan(np.tan(theta/2))
@@ -59,24 +60,26 @@ def f(x, u):
 
    return xdot
 
-p1, p2, p3, p4, p5, p6, p7 = 0.07, 2200, 3.e-05, 15.e-05, 0.4, 5.0, 5.0
+if __name__ == '__main__':
 
-ax = init_figure(-25, 25, -25, 25)
-x0, y0, θ0, vx0, vy0, w0, w10, w20 = 3, 3, 1, 10, 0, 0, 1, 1
-x = np.array([[x0, y0, θ0, vx0, vy0, w0, w10, w20]]).T
-dt = 0.01
-R = 10
-K, u_bar = 4, 20
-for t in np.arange(0, 5, dt):
-    clear(ax)
-    draw_vector_field(-25,25,-25,25,R)
-    u1,u2 = motion_optimal(x[0,0], x[1,0], x[2,0], K, u_bar, R)
-    u = np.array([[u1], [u2]])
-    x = x + dt * f(x, u)  # Euler
-    mx, my, θ, vx, vy, w, w1, w2 = list(x[0:8, 0])
-    draw_ddboat(ax, mx, my, θ, w1, w2)
-    plt.pause(0.0002)
-plt.pause(10)
+    p1, p2, p3, p4, p5, p6, p7 = 0.07, 2200, 3.e-05, 15.e-05, 0.4, 5.0, 5.0
+
+    ax = init_figure(-25, 25, -25, 25)
+    x0, y0, θ0, vx0, vy0, w0, w10, w20 = 3, 3, 1, 10, 0, 0, 1, 1
+    x = np.array([[x0, y0, θ0, vx0, vy0, w0, w10, w20]]).T
+    dt = 0.01
+    R = 10
+    K, u_bar = 4, 20
+    for t in np.arange(0, 5, dt):
+        clear(ax)
+        draw_vector_field(-25,25,-25,25,R)
+        u1,u2 = motion_optimal(x[0,0], x[1,0], x[2,0], K, u_bar, R)
+        u = np.array([[u1], [u2]])
+        x = x + dt * f(x, u)  # Euler
+        mx, my, θ, vx, vy, w, w1, w2 = list(x[0:8, 0])
+        draw_ddboat(ax, mx, my, θ, w1, w2)
+        plt.pause(0.0002)
+    plt.pause(10)
 
 
 
