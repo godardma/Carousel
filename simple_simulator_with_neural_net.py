@@ -76,7 +76,8 @@ if __name__ == '__main__':
 
     R = 10
     K, u_bar = 4, 20
-    neural_net = NeuralNetwork("models/network_v3_1000000_4_20_10_10000.csv")
+    # neural_net = NeuralNetwork("models/network_v3_1000000_4_20_10_10000.csv")
+    neural_net = NeuralNetwork("models/network_v3_1000000_0.3_0.5_10_10000.csv")
     for t in np.arange(0, 50, dt):
         clear(ax)
         draw_vector_field(-25,25,-25,25,R)
